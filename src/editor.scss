@@ -4,6 +4,16 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-bwl-latest-posts {
+.wp-block-bwl-block-bwl-latest-posts-gt-block {
 	border: 1px dotted #f00;
+
+	h2 {
+		line-height: 1.5rem !important;
+		margin: 0 0 1rem 0 ip !important;
+		a {
+			font-size: 18px;
+			font-weight: 600;
+			text-decoration: none;
+		}
+	}
 }

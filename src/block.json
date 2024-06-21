@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/bwl-latest-posts",
-	"version": "0.1.0",
+	"name": "bwl-block/bwl-latest-posts-gt-block",
+	"version": "1.0.0",
 	"title": "Bwl Latest Posts",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "A Gutenberg block that has been designed to display the most recent WordPress posts. Arrange posts by date and title, and filter them according to the categories. It also displays or hides the post's featured image.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -35,7 +35,7 @@
 			}
 		}
 	},
-	"textdomain": "bwl-latest-posts",
+	"textdomain": "bwl-lp-gt-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

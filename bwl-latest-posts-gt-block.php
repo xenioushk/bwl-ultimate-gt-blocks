@@ -6,7 +6,7 @@
  * Requires at least: 6.0
  * Requires PHP:      7.0
  * Version:           	1.0.0
- * Author:            The WordPress Contributors
+ * Author:            Mahbub Alam Khan
  * License:           GPL-2.0-or-later
  * License URI:      https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     bwl-lp-gt-block
@@ -73,7 +73,7 @@ function cbLatestPosts($atts, $content)
 		return ob_get_clean();
 
 	else :
-		return "No Post Found";
+		return esc_html("No Post Found", "bwl-lp-gt-block");
 	endif;
 
 	// echo "<pre>";
