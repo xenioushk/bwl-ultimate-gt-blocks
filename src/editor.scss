@@ -6,14 +6,19 @@
 
 .wp-block-bwl-block-bwl-latest-posts-gt-block {
 	border: 1px dotted #f00;
-
-	h2 {
-		line-height: 1.5rem !important;
-		margin: 0 0 1rem 0 ip !important;
-		a {
-			font-size: 18px;
-			font-weight: 600;
-			text-decoration: none;
+	div {
+		margin: 0 0 1rem 0 !important;
+		div {
+			margin: 0px !important;
+		}
+		h2 {
+			line-height: 1.5rem !important;
+			margin: 0 !important;
+			a {
+				font-size: 18px;
+				font-weight: 600;
+				text-decoration: none;
+			}
 		}
 	}
 }
