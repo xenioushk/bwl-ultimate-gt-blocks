@@ -7,8 +7,14 @@ import { format, dateI18n, getSettings } from "@wordpress/date";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { numberOfPosts, displayFeaturedImage, order, orderBy, categories } =
-		attributes;
+	const {
+		numberOfPosts,
+		displayFeaturedImage,
+		displayExcerpt,
+		order,
+		orderBy,
+		categories,
+	} = attributes;
 
 	const catIds =
 		categories && categories.length > 0 ? categories.map((cat) => cat.id) : [];
@@ -46,6 +52,10 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ displayFeaturedImage: status });
 	};
 
+	const handleDisplayExcerpt = (status) => {
+		setAttributes({ displayExcerpt: status });
+	};
+
 	const handleNumberOfItemsChange = (postsCount) => {
 		setAttributes({ numberOfPosts: postsCount });
 	};
@@ -68,9 +78,14 @@ export default function Edit({ attributes, setAttributes }) {
 			<InspectorControls>
 				<PanelBody>
 					<ToggleControl
-						label="Display Featured Image?"
+						label="Display featured image?"
 						checked={displayFeaturedImage}
 						onChange={handleDisplayFeaturedImage}
+					/>
+					<ToggleControl
+						label="Display post excerpt?"
+						checked={displayExcerpt}
+						onChange={handleDisplayExcerpt}
 					/>
 					<QueryControls
 						numberOfItems={numberOfPosts}
@@ -106,11 +121,19 @@ export default function Edit({ attributes, setAttributes }) {
 									</h2>
 								)}
 
+								{post.excerpt && displayExcerpt && (
+									<div>
+										<RawHTML>{post.excerpt.rendered}</RawHTML>
+									</div>
+								)}
+
 								{displayFeaturedImage && featuredMedia && (
-									<img
-										src={featuredMedia.media_details.sizes.medium.source_url}
-										alt={featuredMedia.alt_text}
-									/>
+									<div>
+										<img
+											src={featuredMedia.media_details.sizes.medium.source_url}
+											alt={featuredMedia.alt_text}
+										/>
+									</div>
 								)}
 
 								{post.date_gmt && (

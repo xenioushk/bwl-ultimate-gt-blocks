@@ -13,6 +13,8 @@ class CbLatestPosts extends BaseController
   public $categories = [];
   public $postType = "post";
   public $postStatus = "publish";
+  public $displayFeaturedImage = true;
+  public $displayExcerpt = false;
 
   public function __construct()
   {
@@ -30,6 +32,9 @@ class CbLatestPosts extends BaseController
     $order = $atts['order'] ?? $this->order;
     $orderBy = $atts['orderBy'] ?? $this->orderBy;
     $catgories = $atts['categories'] ?? $this->categories;
+    $this->displayExcerpt = $atts['displayExcerpt'] ?? false ?: false;
+    $this->displayFeaturedImage = $atts['displayFeaturedImage'] ?? false ?: false;
+
 
 
     $args = array(
@@ -56,31 +61,39 @@ class CbLatestPosts extends BaseController
     if ($loop->have_posts()) :
 
       ob_start();
-      echo '<div class="lastst-post-block">';
-      while ($loop->have_posts()) :
+      echo '<div class="latest-post-block">';
 
+      while ($loop->have_posts()) :
+        echo '<div class="post-content">';
         $loop->the_post();
         $post_id = get_the_ID();
         $title = get_the_title() ?: "No Title";
+        $excerpt = get_the_excerpt();
         $permalink = esc_url(get_the_permalink());
         $news_thumb = "";
+        $date = get_the_date();
 
-        if ($showImage == true && has_post_thumbnail()) {
+        if ($this->displayFeaturedImage && has_post_thumbnail()) {
           $news_thumb = "<figure>" . get_the_post_thumbnail($post_id, 'large') . "</figure>";
         }
 
 ?>
-        <h2><a href=<?php echo $permalink ?> title=<?php echo $title ?>><?php echo $title ?></a></h2>
-        <div class="featured-image"><?php echo $news_thumb ?></div>
+<h2><a href=<?php echo $permalink ?> title=<?php echo $title ?>><?php echo $title ?></a></h2>
+
+<?php echo $this->displayExcerpt ? "<p>{$excerpt}</p>" : ""; ?>
+
+<div class="featured-image"><?php echo $news_thumb ?></div>
+<date><?php echo $date ?></date>
 
 
 <?php
+        echo "</div>";
       endwhile;
       echo "</div>";
       return ob_get_clean();
 
     else :
-      return esc_html("No Post Found", $this->plugin_text_domain);
+      return esc_html("No post found!", $this->plugin_text_domain);
     endif;
   }
 }

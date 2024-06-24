@@ -4,3 +4,14 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+
+.latest-post-block {
+	.post-content {
+		h2 {
+			font-size: 24px;
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
