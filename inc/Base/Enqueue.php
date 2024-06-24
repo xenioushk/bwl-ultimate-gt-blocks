@@ -11,36 +11,42 @@ class Enqueue extends BaseController
 
   public function register()
   {
+
     add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
   }
 
   private function thirdPartyStyles()
   {
-    return [
-      "font-awesome" => [
-        "load" => $this->loadFaAssets,
-        "style" => ["font-awesome.min", "v4-shims.min"]
-      ],
-      "owl-carousel" => [
-        "style" => ["owl.carousel"]
-      ],
-      "remodal" => [
-        "load" => $this->load_remodal_assets,
-        "style" => ["remodal", "remodal-default-theme"]
-      ],
-    ];
+
+    return [];
+
+    // return [
+    //   "font-awesome" => [
+    //     "load" => $this->loadFaAssets,
+    //     "style" => ["font-awesome.min", "v4-shims.min"]
+    //   ],
+    //   "owl-carousel" => [
+    //     "style" => ["owl.carousel"]
+    //   ],
+    //   "remodal" => [
+    //     "load" => $this->load_remodal_assets,
+    //     "style" => ["remodal", "remodal-default-theme"]
+    //   ],
+    // ];
   }
 
   private function getAppStyles()
   {
     //only write the style file name.
     return [
-      'frontend'
+      // 'frontend',
+      'style-index'
     ];
   }
 
   private function thirdPartyScripts()
   {
+    return [];
     // Dependency add example.
     // In this example owl carousel is depenedent on two other plugins.
     //"FOLDER_NAME" => [
@@ -49,21 +55,21 @@ class Enqueue extends BaseController
     //   "load" => 0 // default 1.
     // ],
 
-    return [
-      "owl-carousel" => [
-        "script" => ["owl.carousel.min"]
-      ],
-      "remodal" => [
-        "load" => $this->load_remodal_assets,
-        "script" => ["jquery.remodal"]
-      ],
-      "smk-accordion" => [
-        "script" => ["smk-accordion.min"]
-      ],
-      "jquery-tipsy" => [
-        "script" => ["jquery.tipsy"]
-      ]
-    ];
+    // return [
+    //   "owl-carousel" => [
+    //     "script" => ["owl.carousel.min"]
+    //   ],
+    //   "remodal" => [
+    //     "load" => $this->load_remodal_assets,
+    //     "script" => ["jquery.remodal"]
+    //   ],
+    //   "smk-accordion" => [
+    //     "script" => ["smk-accordion.min"]
+    //   ],
+    //   "jquery-tipsy" => [
+    //     "script" => ["jquery.tipsy"]
+    //   ]
+    // ];
   }
   private function getAppScripts()
   {
@@ -71,12 +77,13 @@ class Enqueue extends BaseController
     // key value associative array contains the dependencies. 
     // seperate dependencies by comma(,)
     return [
-      'frontend' => ""
+      // 'frontend' => ""
     ];
   }
 
   public function enqueueScripts()
   {
+
 
     // Third Party Styles.
     if (!empty($thirdPartyStyles = $this->thirdPartyStyles())) {
@@ -103,7 +110,7 @@ class Enqueue extends BaseController
       foreach ($appStyles as $style) {
         wp_enqueue_style(
           "{$this->plugin_slug}-{$style}",
-          "{$this->pluginStylesDir}{$style}.css",
+          "{$this->pluginAssetsDir}{$style}.css",
           [],
           $this->plugin_version
         );
@@ -166,7 +173,7 @@ class Enqueue extends BaseController
     }
 
     // Load frontend variables used by the JS files.
-    $this->frontendLocalizeScripts();
+    //$this->frontendLocalizeScripts();
   }
 
   public function frontendLocalizeScripts()

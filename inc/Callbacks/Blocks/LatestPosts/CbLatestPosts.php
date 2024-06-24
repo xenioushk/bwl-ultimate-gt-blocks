@@ -21,6 +21,10 @@ class CbLatestPosts extends BaseController
 
   function getPosts($atts = [])
   {
+
+    // echo "<pre>";
+    // print_r($atts);
+    // echo "</pre>";
     $numberOfPosts = $atts['numberOfPosts'] ?? $this->numberOfPosts;
     $showImage = (isset($atts['displayFeaturedImage']) &&  $atts['displayFeaturedImage'] == true) ? true : false;
     $order = $atts['order'] ?? $this->order;
@@ -52,19 +56,27 @@ class CbLatestPosts extends BaseController
     if ($loop->have_posts()) :
 
       ob_start();
+      echo '<div class="lastst-post-block">';
       while ($loop->have_posts()) :
 
         $loop->the_post();
         $post_id = get_the_ID();
         $title = get_the_title() ?: "No Title";
-        $permalink = get_the_permalink();
-        echo "<h2><a href={$permalink} title={$title}>{$title}</a></h2>";
+        $permalink = esc_url(get_the_permalink());
+        $news_thumb = "";
+
         if ($showImage == true && has_post_thumbnail()) {
-          $news_thumb = get_the_post_thumbnail($post_id, 'large');
-          echo "<figure>{$news_thumb}</figure>";
+          $news_thumb = "<figure>" . get_the_post_thumbnail($post_id, 'large') . "</figure>";
         }
 
+?>
+        <h2><a href=<?php echo $permalink ?> title=<?php echo $title ?>><?php echo $title ?></a></h2>
+        <div class="featured-image"><?php echo $news_thumb ?></div>
+
+
+<?php
       endwhile;
+      echo "</div>";
       return ob_get_clean();
 
     else :
