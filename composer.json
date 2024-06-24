@@ -1,0 +1,19 @@
+{
+	"name": "xenioushk/bwlllpgtb",
+	"description": "Custom gutenberg block to display WordPress posts.",
+	"type": "project",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"Xenioushk\\Bwllpgtb\\": "inc/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Md Mahbub Alam Khan",
+			"email": "hkhan.cse@gmail.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"require": {}
+}

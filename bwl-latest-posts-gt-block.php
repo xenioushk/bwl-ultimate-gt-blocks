@@ -9,84 +9,38 @@
  * Author:            Mahbub Alam Khan
  * License:           GPL-2.0-or-later
  * License URI:      https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:     bwl-lp-gt-block
+ * Text Domain:     bwllpgtb
  *
- * @package           BwlLpGtBlock
+ * @package           bwllpgtb
  */
 
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+// security check.
+defined('ABSPATH') or die("Unauthorized access");
+
+if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
+	require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-function cbLatestPosts($atts, $content)
+define("BLPGTB_DIR", __DIR__);
+
+use Xenioushk\Bwllpgtb\Base\Activate;
+use Xenioushk\Bwllpgtb\Base\Deactivate;
+
+
+function bwllpgtbActivePlugin()
 {
-	// echo "<pre>";
-	// print_r($atts);
-	// echo "</pre>";
-	$limit = $atts['numberOfPosts'] ?? 5;
-	$showImage = (isset($atts['displayFeaturedImage']) &&  $atts['displayFeaturedImage'] == true) ? true : false;
-	$order = $atts['order'] ?? "desc";
-	$orderby = $atts['orderBy'] ?? "date";
-	$catgories = $atts['categories'] ?? [];
-
-
-	$args = array(
-		// 'category_name' => $category,
-		// 'post_status' => 'publish',
-		'post_type' => 'post',
-		'orderby' => $orderby,
-		'order' => $order,
-		'posts_per_page' => $limit,
-		'ignore_sticky_posts' => 1
-	);
-
-	if (sizeof($catgories) > 0) {
-
-		$args['category__in'] = array_column($catgories, 'id');
-	}
-
-	// echo "<pre>";
-	// print_r($args);
-	// echo "</pre>";
-
-
-	$loop = new WP_Query($args);
-
-
-	if ($loop->have_posts()) :
-
-		ob_start();
-		while ($loop->have_posts()) :
-
-			$loop->the_post();
-			$post_id = get_the_ID();
-			$title = get_the_title() ?: "No Title";
-			$permalink = get_the_permalink();
-			echo "<h2><a href={$permalink} title={$title}>{$title}</a></h2>";
-			if ($showImage == true && has_post_thumbnail()) {
-
-				$news_thumb = get_the_post_thumbnail($post_id, 'large');
-				echo "<figure>{$news_thumb}</figure>";
-			}
-
-		endwhile;
-		return ob_get_clean();
-
-	else :
-		return esc_html("No Post Found", "bwl-lp-gt-block");
-	endif;
-
-	// echo "<pre>";
-	// print_r($atts);
-	// echo "</pre>";
-	// return "Hello from PHP";
+	Activate::activate();
 }
 
-function bwl_latest_posts_bwl_latest_posts_block_init()
+register_activation_hook(__FILE__, 'bwllpgtbActivePlugin');
+
+function bwllpgtbDeactivePlugin()
 {
-	// register_block_type(__DIR__ . '/build');
-	register_block_type_from_metadata(__DIR__ . '/build', array(
-		"render_callback" => "cbLatestPosts"
-	));
+	Deactivate::deactivate();
 }
-add_action('init', 'bwl_latest_posts_bwl_latest_posts_block_init');
+register_activation_hook(__FILE__, 'bwllpgtbDeactivePlugin');
+
+if (class_exists('Xenioushk\\Bwllpgtb\\Init')) {
+
+	Xenioushk\Bwllpgtb\Init::registerServices();
+}
