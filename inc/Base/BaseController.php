@@ -101,11 +101,11 @@ class BaseController
     // $this->plugin_version = Helpers::pluginVersionManager();
     // $this->pluginInstallationTag = 'bkbm_installation_' . str_replace('.', '_', BKBM_PLUGIN_VER);
     // $this->plugin_slug = "bkbm"; // use for the admin notice tag.
-    // $this->plugin_path = plugin_dir_path(dirname(__FILE__, 2)); // D:\xampp\htdocs\dev.plugin\bkbm\wp-content\plugins\bwl-kb-manager/
-    // $this->plugin_url = plugin_dir_url(dirname(__FILE__, 2)); // http://localhost/dev.plugin/bkbm/wp-content/plugins/bwl-kb-manager/
-    // $this->pluginAssetsDir = $this->plugin_url . "assets/";
-    // $this->pluginScriptsDir = $this->pluginAssetsDir . "scripts/";
-    // $this->pluginStylesDir = $this->pluginAssetsDir . "styles/";
+    $this->plugin_path = plugin_dir_path(dirname(__FILE__, 2)); // D:\xampp\htdocs\dev.plugin\bkbm\wp-content\plugins\bwl-kb-manager/
+    $this->plugin_url = plugin_dir_url(dirname(__FILE__, 2)); // http://localhost/dev.plugin/bkbm/wp-content/plugins/bwl-kb-manager/
+    $this->pluginAssetsDir = $this->plugin_url . "build/";
+    $this->pluginScriptsDir = $this->pluginAssetsDir . "scripts/";
+    $this->pluginStylesDir = $this->pluginAssetsDir . "styles/";
     // $this->pluginRootFile = "bwl-knowledge-base-manager.php"; // bwl-kb-manager/bwl-knowledge-base-manager.php
     // $this->plugin = plugin_basename(dirname(__FILE__, 3)) . "/{$this->pluginRootFile}"; // bwl-kb-manager/bwl-knowledge-base-manager.php
     // $this->plugin_template_path = $this->plugin_path . '/includes/templates';
