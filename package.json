@@ -1,6 +1,6 @@
 {
 	"name": "bwl-latest-posts-gt-block",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "Example block scaffolded with Create Block tool.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
@@ -12,10 +12,7 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start",
-		"lint:php": "vendor/bin/phpcs",
-		"lint:php:fix": "vendor/bin/phpcbf",
-		"prepare": "husky"
+		"start": "wp-scripts start"
 	},
 	"prettier": "@wordpress/prettier-config",
 	"stylelint": {
@@ -29,16 +26,14 @@
 		"*.scss": "npx stylelint --fix"
 	},
 	"devDependencies": {
-		"@wordpress/eslint-plugin": "^20.3.0",
-		"@wordpress/prettier-config": "^4.6.0",
-		"@wordpress/scripts": "^26.19.0",
-		"@wordpress/stylelint-config": "^22.6.0",
-		"eslint-config-prettier": "^9.1.0",
-		"husky": "^9.1.5",
-		"lint-staged": "^15.2.10",
+		"@wordpress/eslint-plugin": "^17.2.0",
+		"@wordpress/prettier-config": "^3.2.0",
+		"@wordpress/scripts": "^26.16.0",
+		"eslint-config-prettier": "^9.0.0",
+		"lint-staged": "^15.0.2",
 		"stylelint": "^14.16.1"
 	},
 	"dependencies": {
-		"@wordpress/element": "^6.6.0"
+		"@wordpress/components": "^25.12.0"
 	}
 }
