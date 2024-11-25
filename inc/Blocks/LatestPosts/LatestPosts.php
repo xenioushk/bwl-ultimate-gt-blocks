@@ -9,12 +9,20 @@ use Xenioushk\Bwllpgtb\Callbacks\Blocks\LatestPosts\CbLatestPosts;
 class LatestPosts extends BaseController
 {
 
-  public function __construct()
-  {
+	public function register(): void
+	{
+		add_action('init', [$this, 'registerBlock']);
+	}
 
-    $cbLatestPosts = new CbLatestPosts();
-    register_block_type_from_metadata(BLPGTB_DIR . '/build', array(
-      "render_callback" => [$cbLatestPosts, 'getPosts']
-    ));
-  }
+
+	public function registerBlock(): void
+	{
+		$cbLatestPosts = new CbLatestPosts();
+		register_block_type_from_metadata(
+			BLPGTB_DIR . '/build',
+			[
+				'render_callback' => [$cbLatestPosts, 'getPosts'],
+			]
+		);
+	}
 }

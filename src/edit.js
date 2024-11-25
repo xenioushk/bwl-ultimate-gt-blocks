@@ -1,12 +1,17 @@
-import { __ } from "@wordpress/i18n";
-import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
-import { useSelect } from "@wordpress/data";
-import { RawHTML } from "@wordpress/element";
-import { PanelBody, QueryControls, ToggleControl } from "@wordpress/components";
-import { format, dateI18n, getSettings } from "@wordpress/date";
-import "./editor.scss";
+// import { __ } from '@wordpress/i18n';
+import { useState, RawHTML } from '@wordpress/element';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+import {
+	PanelBody,
+	QueryControls,
+	ToggleControl,
+	SelectControl,
+} from '@wordpress/components';
+import { format, dateI18n, getSettings } from '@wordpress/date';
+import './editor.scss';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const {
 		numberOfPosts,
 		displayFeaturedImage,
@@ -14,136 +19,214 @@ export default function Edit({ attributes, setAttributes }) {
 		order,
 		orderBy,
 		categories,
+		tags,
 	} = attributes;
 
+	const [ size, setSize ] = useState( '50%' );
+
 	const catIds =
-		categories && categories.length > 0 ? categories.map((cat) => cat.id) : [];
+		categories && categories.length > 0
+			? categories.map( ( cat ) => cat.id )
+			: [];
+
+	const tagsId = tags && tags.length > 0 ? tags.map( ( tag ) => tag.id ) : [];
 
 	const posts = useSelect(
-		(select) => {
-			return select("core").getEntityRecords("postType", "post", {
+		( select ) => {
+			return select( 'core' ).getEntityRecords( 'postType', 'post', {
 				per_page: numberOfPosts,
 				_embed: true, // required for query the feature image.
-				order: order, // ASC or DESC
-				orderBy: orderBy, // Title, Date
+				order, // ASC or DESC
+				orderBy, // Title, Date
 				categories: catIds,
-			});
+				post_tag: tagsId,
+			} );
 		},
-		[numberOfPosts, order, orderBy, categories],
+		[ numberOfPosts, order, orderBy, categories, tags ]
 	);
 
-	const allCats = useSelect((select) => {
-		return select("core").getEntityRecords("taxonomy", "category", {
+	// Get all the categories.
+	const allCats = useSelect( ( select ) => {
+		return select( 'core' ).getEntityRecords( 'taxonomy', 'category', {
 			per_page: -1,
-		});
-	}, []);
+		} );
+	}, [] );
 
 	const categorySuggestions = {};
 
-	if (allCats) {
-		for (let i = 0; i < allCats.length; i++) {
-			const cat = allCats[i];
-			categorySuggestions[cat.name] = cat;
+	if ( allCats ) {
+		for ( let i = 0; i < allCats.length; i++ ) {
+			const cat = allCats[ i ];
+			categorySuggestions[ cat.name ] = cat;
 		}
 	}
-	// console.log(categories);
+	// console.log( categories );
 
-	const handleDisplayFeaturedImage = (status) => {
-		setAttributes({ displayFeaturedImage: status });
+	// Get all the tags.
+	const allTags = useSelect( ( select ) => {
+		return select( 'core' ).getEntityRecords( 'taxonomy', 'post_tag', {
+			per_page: -1,
+		} );
+	}, [] );
+
+	const tagSuggestions = {};
+	if ( allTags ) {
+		for ( let i = 0; i < allTags.length; i++ ) {
+			const tag = allTags[ i ];
+			tagSuggestions[ tag.name ] = tag;
+		}
+	}
+	// console.log( tagSuggestions );
+	// console.log( tagSuggestions );
+
+	const handleDisplayFeaturedImage = ( status ) => {
+		setAttributes( { displayFeaturedImage: status } );
 	};
 
-	const handleDisplayExcerpt = (status) => {
-		setAttributes({ displayExcerpt: status });
+	const handleDisplayExcerpt = ( status ) => {
+		setAttributes( { displayExcerpt: status } );
 	};
 
-	const handleNumberOfItemsChange = (postsCount) => {
-		setAttributes({ numberOfPosts: postsCount });
+	const handleNumberOfItemsChange = ( postsCount ) => {
+		setAttributes( { numberOfPosts: postsCount } );
 	};
 
-	const handleCategoriesChange = (values) => {
+	const handleCategoriesChange = ( values ) => {
 		const hasNoSuggestions = values.some(
-			(value) => typeof value === "string" && !categorySuggestions[value],
+			( value ) =>
+				typeof value === 'string' && ! categorySuggestions[ value ]
 		);
-		if (hasNoSuggestions) return;
+		if ( hasNoSuggestions ) return;
 
-		const updatedCats = values.map((token) => {
-			return typeof token === "string" ? categorySuggestions[token] : token;
-		});
+		const updatedCats = values.map( ( token ) => {
+			return typeof token === 'string'
+				? categorySuggestions[ token ]
+				: token;
+		} );
 
-		setAttributes({ categories: updatedCats });
+		setAttributes( { categories: updatedCats } );
+	};
+
+	const handleTagsChange = ( values ) => {
+		const hasNoSuggestions = values.some(
+			( value ) => typeof value === 'string' && tagSuggestions[ value ]
+		);
+		if ( hasNoSuggestions ) return;
+
+		const updatedTags = values.map( ( token ) => {
+			return typeof token === 'string' ? tagSuggestions[ token ] : token;
+		} );
+		setAttributes( { tags: updatedTags } );
 	};
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody>
+					<SelectControl
+						multiple
+						label="Size"
+						value={ size }
+						options={ [
+							{ label: 'Big', value: '100%' },
+							{ label: 'Medium', value: '50%' },
+							{ label: 'Small', value: '25%' },
+						] }
+						onChange={ ( newSize ) => setSize( newSize ) }
+					/>
 					<ToggleControl
 						label="Display featured image?"
-						checked={displayFeaturedImage}
-						onChange={handleDisplayFeaturedImage}
+						checked={ displayFeaturedImage }
+						onChange={ handleDisplayFeaturedImage }
+					/>
+					<SelectControl
+						label="Tags"
+						value={ tags }
+						options={ tagSuggestions }
+						onChange={ handleTagsChange }
 					/>
 					<ToggleControl
 						label="Display post excerpt?"
-						checked={displayExcerpt}
-						onChange={handleDisplayExcerpt}
+						checked={ displayExcerpt }
+						onChange={ handleDisplayExcerpt }
 					/>
 					<QueryControls
-						numberOfItems={numberOfPosts}
-						onNumberOfItemsChange={handleNumberOfItemsChange}
-						minItems={1}
-						maxItems={10}
-						orderBy={orderBy}
-						onOrderByChange={(value) => setAttributes({ orderBy: value })}
-						order={order}
-						onOrderChange={(value) => setAttributes({ order: value })}
-						categorySuggestions={categorySuggestions}
-						selectedCategories={categories}
-						onCategoryChange={handleCategoriesChange}
+						numberOfItems={ numberOfPosts }
+						onNumberOfItemsChange={ handleNumberOfItemsChange }
+						minItems={ 1 }
+						maxItems={ 10 }
+						orderBy={ orderBy }
+						onOrderByChange={ ( value ) =>
+							setAttributes( { orderBy: value } )
+						}
+						order={ order }
+						onOrderChange={ ( value ) =>
+							setAttributes( { order: value } )
+						}
+						categorySuggestions={ categorySuggestions }
+						selectedCategories={ categories }
+						onCategoryChange={ handleCategoriesChange }
 					/>
 				</PanelBody>
 			</InspectorControls>
 
-			<div {...useBlockProps()}>
-				{posts &&
-					posts.map((post) => {
+			<div { ...useBlockProps() }>
+				{ posts &&
+					posts.map( ( post ) => {
 						const featuredMedia =
 							post._embedded &&
-							post._embedded["wp:featuredmedia"] &&
-							post._embedded["wp:featuredmedia"].length > 0 &&
-							post._embedded["wp:featuredmedia"][0];
+							post._embedded[ 'wp:featuredmedia' ] &&
+							post._embedded[ 'wp:featuredmedia' ].length > 0 &&
+							post._embedded[ 'wp:featuredmedia' ][ 0 ];
 						return (
-							<div key={post.id}>
-								{post.title && (
+							<div className="blog-post" key={ post.id }>
+								{ post.title && (
 									<h2>
-										<a href={post.link}>
-											<RawHTML>{post.title.rendered}</RawHTML>
+										<a href={ post.link }>
+											<RawHTML>
+												{ post.title.rendered }
+											</RawHTML>
 										</a>
 									</h2>
-								)}
+								) }
 
-								{post.excerpt && displayExcerpt && (
+								{ post.excerpt && displayExcerpt && (
 									<div>
-										<RawHTML>{post.excerpt.rendered}</RawHTML>
+										<RawHTML>
+											{ post.excerpt.rendered }
+										</RawHTML>
 									</div>
-								)}
+								) }
 
-								{displayFeaturedImage && featuredMedia && (
+								{ displayFeaturedImage && featuredMedia && (
 									<div>
 										<img
-											src={featuredMedia.media_details.sizes.medium.source_url}
-											alt={featuredMedia.alt_text}
+											src={
+												featuredMedia.media_details
+													.sizes.medium.source_url
+											}
+											alt={ featuredMedia.alt_text }
 										/>
 									</div>
-								)}
+								) }
 
-								{post.date_gmt && (
-									<time dateTime={format("c", post, post.date_gmt)}>
-										{dateI18n(getSettings().formats.date, post.date_gmt)}
+								{ post.date_gmt && (
+									<time
+										dateTime={ format(
+											'c',
+											post,
+											post.date_gmt
+										) }
+									>
+										{ dateI18n(
+											getSettings().formats.date,
+											post.date_gmt
+										) }
 									</time>
-								)}
+								) }
 							</div>
 						);
-					})}
+					} ) }
 			</div>
 		</>
 	);

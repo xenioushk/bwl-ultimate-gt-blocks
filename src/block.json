@@ -8,8 +8,16 @@
 	"icon": "smiley",
 	"description": "A Gutenberg block that has been designed to display the most recent WordPress posts. Arrange posts by date and title, and filter them according to the categories. It also displays or hides the post's featured image.",
 	"example": {},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"gradients": true
+		}
 	},
 	"attributes": {
 		"numberOfPosts": {
@@ -33,6 +41,12 @@
 			"default": "date"
 		},
 		"categories": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"tags": {
 			"type": "array",
 			"items": {
 				"type": "object"

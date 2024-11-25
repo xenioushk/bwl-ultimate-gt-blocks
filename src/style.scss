@@ -6,12 +6,20 @@
  */
 
 .latest-post-block {
+	clear: both;
+
 	.post-content {
+		clear: both;
+
 		h2 {
 			font-size: 24px;
+
 			a {
 				text-decoration: none;
 			}
+
 		}
+
 	}
+
 }

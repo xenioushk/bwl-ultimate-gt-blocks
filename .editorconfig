@@ -4,14 +4,21 @@
 # WordPress Coding Standards
 # https://make.wordpress.org/core/handbook/coding-standards/
 
-root = true
-
 [*]
 charset = utf-8
 end_of_line = lf
+indent_size = 4
+indent_style = space
 insert_final_newline = true
+max_line_length = 120
+tab_width = 4
 trim_trailing_whitespace = true
-indent_style = tab
+
+[*.php]
+brace_style = same_line
+
+[{package.json, composer.json}]
+tab_width = 4
 
 [*.{yml,yaml}]
 indent_style = space
