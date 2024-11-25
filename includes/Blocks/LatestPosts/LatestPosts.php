@@ -1,9 +1,9 @@
 <?php
 
-namespace Xenioushk\Bwllpgtb\Blocks\LatestPosts;
+namespace Xenioushk\BwlLpgtb\Blocks\LatestPosts;
 
-use Xenioushk\Bwllpgtb\Base\BaseController;
-use Xenioushk\Bwllpgtb\Callbacks\Blocks\LatestPosts\CbLatestPosts;
+use Xenioushk\BwlLpgtb\Base\BaseController;
+use Xenioushk\BwlLpgtb\Callbacks\Blocks\LatestPosts\CbLatestPosts;
 
 
 class LatestPosts extends BaseController

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package bwllpgtb
+ * @package BwlLpgtb
  */
 
-namespace Xenioushk\Bwllpgtb;
+namespace Xenioushk\BwlLpgtb;
 
 class Init
 {

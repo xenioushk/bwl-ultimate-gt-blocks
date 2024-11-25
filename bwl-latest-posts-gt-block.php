@@ -11,8 +11,10 @@
  * License URI:      https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     bwllpgtb
  *
- * @package           bwllpgtb
+ * @package           BwlLpgtb
  */
+
+namespace BwlLpgtb;
 
 // security check.
 defined('ABSPATH') or die('Unauthorized access');
@@ -23,8 +25,8 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 
 define('BLPGTB_DIR', __DIR__);
 
-use Xenioushk\Bwllpgtb\Base\Activate;
-use Xenioushk\Bwllpgtb\Base\Deactivate;
+use Xenioushk\BwlLpgtb\Base\Activate;
+use Xenioushk\BwlLpgtb\Base\Deactivate;
 
 function bwllpgtbActivePlugin()
 {
@@ -40,7 +42,7 @@ function bwllpgtbDeactivePlugin()
 
 register_activation_hook(__FILE__, 'bwllpgtbDeactivePlugin');
 
-if (class_exists('Xenioushk\\Bwllpgtb\\Init')) {
+if (class_exists('\Xenioushk\\BwlLpgtb\\Init')) {
 
-	Xenioushk\Bwllpgtb\Init::registerServices();
+	\Xenioushk\BwlLpgtb\Init::registerServices();
 }

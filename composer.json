@@ -10,7 +10,7 @@
 	"homepage": "https://github.com/xenioushk",
 	"autoload": {
 		"psr-4": {
-			"Xenioushk\\Bwllpgtb\\": "inc/"
+			"Xenioushk\\BwlLpgtb\\": "includes/"
 		}
 	},
 	"authors": [

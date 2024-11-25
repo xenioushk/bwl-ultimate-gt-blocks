@@ -11,6 +11,11 @@
 
 	div.blog-post {
 		margin: 0 0 1rem 0 !important;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: start;
+		gap: 6px;
 
 		div {
 			margin: 0 !important;
@@ -20,19 +25,28 @@
 			line-height: 24px !important;
 			margin: 0 !important;
 			font-weight: 600;
+			max-width: 400px;
 
 			a {
 
-				div {
-					font-size: 24px;
-				}
+				font-size: 24px;
 				text-decoration: none;
 			}
 
 		}
 
-		time {
+
+		.excerpt {
 			font-size: 14px;
+
+			p {
+				margin: 0;
+			}
+		}
+
+		time {
+			font-size: 12px;
+			font-style: italic;
 		}
 
 	}

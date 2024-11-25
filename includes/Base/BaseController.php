@@ -1,12 +1,13 @@
 <?php
 
 /**
- * @package bwllpgtb
+ * @package BwlLpgtb
  */
 
-namespace Xenioushk\Bwllpgtb\Base;
+namespace Xenioushk\BwlLpgtb\Base;
 
-class BaseController {
+class BaseController
+{
 
 	public $app_url;
 	public $plugin_version;
@@ -89,7 +90,8 @@ class BaseController {
 
 	public $kdeskBundle;
 
-	public function __construct() {
+	public function __construct()
+	{
 		// global $wpdb;
 		// $this->bkb_data = get_option('bkb_options');
 		// $this->app_url = esc_url(get_site_url());
@@ -99,8 +101,8 @@ class BaseController {
 		// $this->plugin_version = Helpers::pluginVersionManager();
 		// $this->pluginInstallationTag = 'bkbm_installation_' . str_replace('.', '_', BKBM_PLUGIN_VER);
 		// $this->plugin_slug = "bkbm"; // use for the admin notice tag.
-		$this->plugin_path      = plugin_dir_path( dirname( __DIR__, 1 ) ); // D:\xampp\htdocs\dev.plugin\bkbm\wp-content\plugins\bwl-kb-manager/
-		$this->plugin_url       = plugin_dir_url( dirname( __DIR__, 1 ) ); // http://localhost/dev.plugin/bkbm/wp-content/plugins/bwl-kb-manager/
+		$this->plugin_path      = plugin_dir_path(dirname(__DIR__, 1)); // D:\xampp\htdocs\dev.plugin\bkbm\wp-content\plugins\bwl-kb-manager/
+		$this->plugin_url       = plugin_dir_url(dirname(__DIR__, 1)); // http://localhost/dev.plugin/bkbm/wp-content/plugins/bwl-kb-manager/
 		$this->pluginAssetsDir  = $this->plugin_url . 'build/';
 		$this->pluginScriptsDir = $this->pluginAssetsDir . 'scripts/';
 		$this->pluginStylesDir  = $this->pluginAssetsDir . 'styles/';

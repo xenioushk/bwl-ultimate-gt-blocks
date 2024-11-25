@@ -12,6 +12,8 @@ import { format, dateI18n, getSettings } from '@wordpress/date';
 import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
+	const blockProps = useBlockProps();
+
 	const {
 		numberOfPosts,
 		displayFeaturedImage,
@@ -170,7 +172,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 
-			<div { ...useBlockProps() }>
+			<div { ...blockProps }>
 				{ posts &&
 					posts.map( ( post ) => {
 						const featuredMedia =
@@ -191,7 +193,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								) }
 
 								{ post.excerpt && displayExcerpt && (
-									<div>
+									<div className="excerpt">
 										<RawHTML>
 											{ post.excerpt.rendered }
 										</RawHTML>
