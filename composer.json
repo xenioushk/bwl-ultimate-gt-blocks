@@ -1,6 +1,6 @@
 {
-	"name": "xenioushk/bwlllpgtb",
-	"description": "Custom gutenberg block to display WordPress posts.",
+	"name": "xenioushk/bwlultimategtblocks",
+	"description": "BWL Ultimate Gutenberg Blocks",
 	"type": "project",
 	"license": "MIT",
 	"keywords": [
@@ -10,12 +10,12 @@
 	"homepage": "https://github.com/xenioushk",
 	"autoload": {
 		"psr-4": {
-			"Xenioushk\\BwlLpgtb\\": "includes/"
+			"Xenioushk\\BwlUltimateGtBlocks\\": "includes/"
 		}
 	},
 	"authors": [
 		{
-			"name": "Md Mahbub Alam Khan",
+			"name": "Mahbub Alam Khan",
 			"email": "hkhan.cse@gmail.com"
 		}
 	],

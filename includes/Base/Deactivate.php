@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package BwlLpgtb
+ * @package BwlUltimateGtBlocks
  */
 
-namespace Xenioushk\BwlLpgtb\Base;
+namespace Xenioushk\BwlUltimateGtBlocks\Base;
 
 class Deactivate
 {

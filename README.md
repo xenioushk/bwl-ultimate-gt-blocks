@@ -1,6 +1,6 @@
 ## Bwl Latest Posts GT Block
 
-Contributors: Md Mahbub Alam Khan
+Contributors: Mahbub Alam Khan
 
 Tags: block
 
@@ -50,4 +50,4 @@ Answer to foo bar dilemma.
 
 1.0
 
-- Release
+-   Release

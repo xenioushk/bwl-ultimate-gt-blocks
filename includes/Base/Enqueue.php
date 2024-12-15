@@ -1,19 +1,22 @@
 <?php
 
 /**
- * @package bwllpgtb
+ * @package BwlUltimateGtBlocks
  */
 
-namespace Xenioushk\Bwllpgtb\Base;
+namespace Xenioushk\BwlUltimateGtBlocks\Base;
 
-class Enqueue extends BaseController {
+class Enqueue extends BaseController
+{
 
-	public function register() {
+	public function register()
+	{
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ] );
+		add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
 	}
 
-	private function thirdPartyStyles() {
+	private function thirdPartyStyles()
+	{
 
 		return [];
 
@@ -32,7 +35,8 @@ class Enqueue extends BaseController {
 		// ];
 	}
 
-	private function getAppStyles() {
+	private function getAppStyles()
+	{
 		// only write the style file name.
 		return [
 			// 'frontend',
@@ -40,7 +44,8 @@ class Enqueue extends BaseController {
 		];
 	}
 
-	private function thirdPartyScripts() {
+	private function thirdPartyScripts()
+	{
 		return [];
 		// Dependency add example.
 		// In this example owl carousel is depenedent on two other plugins.
@@ -67,27 +72,29 @@ class Enqueue extends BaseController {
 		// ];
 	}
 
-	private function getAppScripts() {
+	private function getAppScripts()
+	{
 		// only write the script file name
 		// key value associative array contains the dependencies.
 		// seperate dependencies by comma(,)
 		return [
-		// 'frontend' => ""
+			// 'frontend' => ""
 		];
 	}
 
-	public function enqueueScripts() {
+	public function enqueueScripts()
+	{
 
 		// Third Party Styles.
-		if ( ! empty( $thirdPartyStyles = $this->thirdPartyStyles() ) ) {
-			foreach ( $thirdPartyStyles as $style_folder => $style_info ) {
+		if (! empty($thirdPartyStyles = $this->thirdPartyStyles())) {
+			foreach ($thirdPartyStyles as $style_folder => $style_info) {
 
-				$load_style = ( isset( $style_info['load'] ) && $style_info['load'] == 0 ) ? 0 : 1;
+				$load_style = (isset($style_info['load']) && $style_info['load'] == 0) ? 0 : 1;
 
-				if ( $load_style ) {
-					foreach ( $style_info['style'] as $style ) {
+				if ($load_style) {
+					foreach ($style_info['style'] as $style) {
 						wp_enqueue_style(
-							"{$this->plugin_slug}-" . str_replace( '.', '-', $style ),
+							"{$this->plugin_slug}-" . str_replace('.', '-', $style),
 							"{$this->thirdPartyAssetsDir}{$style_folder}/{$style}.css",
 							[],
 							$this->plugin_version
@@ -99,8 +106,8 @@ class Enqueue extends BaseController {
 
 		// App Styles.
 
-		if ( ! empty( $appStyles = $this->getAppStyles() ) ) {
-			foreach ( $appStyles as $style ) {
+		if (! empty($appStyles = $this->getAppStyles())) {
+			foreach ($appStyles as $style) {
 				wp_enqueue_style(
 					"{$this->plugin_slug}-{$style}",
 					"{$this->pluginAssetsDir}{$style}.css",
@@ -112,7 +119,7 @@ class Enqueue extends BaseController {
 
 		// RTL Support
 
-		if ( is_rtl() ) {
+		if (is_rtl()) {
 			wp_enqueue_style(
 				"{$this->plugin_slug}-frontend-rtl",
 				"{$this->pluginStylesDir}{$style}_rtl.css",
@@ -123,22 +130,22 @@ class Enqueue extends BaseController {
 
 		// Third Party Scripts.
 
-		if ( ! empty( $thirdPartyScripts = $this->thirdPartyScripts() ) ) {
-			foreach ( $thirdPartyScripts as $script_folder => $script_info ) {
+		if (! empty($thirdPartyScripts = $this->thirdPartyScripts())) {
+			foreach ($thirdPartyScripts as $script_folder => $script_info) {
 
 				// Check dependencies.
 
-				$dependency = ( isset( $script_info['dep'] ) && ! empty( $script_info['dep'] ) )
-				? $this->default_scripts_dependency . ',' . $script_info['dep'] : $this->default_scripts_dependency;
+				$dependency = (isset($script_info['dep']) && ! empty($script_info['dep']))
+					? $this->default_scripts_dependency . ',' . $script_info['dep'] : $this->default_scripts_dependency;
 
-				$load_script = ( isset( $script_info['load'] ) && $script_info['load'] == 0 ) ? 0 : 1;
+				$load_script = (isset($script_info['load']) && $script_info['load'] == 0) ? 0 : 1;
 
-				if ( $load_script ) {
-					foreach ( $script_info['script'] as $script ) {
+				if ($load_script) {
+					foreach ($script_info['script'] as $script) {
 						wp_enqueue_script(
 							"{$this->plugin_slug}-{$script_folder}",
 							"{$this->thirdPartyAssetsDir}{$script_folder}/{$script}.js",
-							[ $dependency ],
+							[$dependency],
 							$this->plugin_version,
 							true
 						);
@@ -149,13 +156,13 @@ class Enqueue extends BaseController {
 
 		// App Scripts
 
-		if ( ! empty( $appScripts = $this->getAppScripts() ) ) {
-			foreach ( $appScripts as $script => $dependency ) {
-				$dependency = ( ! empty( $dependency ) ) ? $this->default_scripts_dependency . ',' . $dependency : $this->default_scripts_dependency;
+		if (! empty($appScripts = $this->getAppScripts())) {
+			foreach ($appScripts as $script => $dependency) {
+				$dependency = (! empty($dependency)) ? $this->default_scripts_dependency . ',' . $dependency : $this->default_scripts_dependency;
 				wp_enqueue_script(
 					"{$this->plugin_slug}-{$script}",
 					"{$this->pluginScriptsDir}{$script}.js",
-					[ $dependency ],
+					[$dependency],
 					$this->plugin_version,
 					true
 				);
@@ -166,7 +173,8 @@ class Enqueue extends BaseController {
 		// $this->frontendLocalizeScripts();
 	}
 
-	public function frontendLocalizeScripts() {
+	public function frontendLocalizeScripts()
+	{
 
 		// Localize scripts.
 		// Frontend.
@@ -175,7 +183,7 @@ class Enqueue extends BaseController {
 			$this->plugin_slug . '-frontend',
 			$this->plugin_slug . 'FrontendData',
 			[
-				$this->plugin_slug . '_app_root' => esc_url( get_site_url() ),
+				$this->plugin_slug . '_app_root' => esc_url(get_site_url()),
 			]
 		);
 	}

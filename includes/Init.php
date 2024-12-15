@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package BwlLpgtb
+ * @package BwlUltimateGtBlocks
  */
 
-namespace Xenioushk\BwlLpgtb;
+namespace Xenioushk\BwlUltimateGtBlocks;
 
 class Init
 {
