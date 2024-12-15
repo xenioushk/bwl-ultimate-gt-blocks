@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwl-gt-block/button",
+	"version": "1.0.0",
+	"title": "Bwl Custom Button",
+	"category": "widgets",
+	"icon": "smiley",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"attributes": {
+		"text": { "type": "string" },
+		"size": { "type": "string", "default": "large" }
+	}
+}
