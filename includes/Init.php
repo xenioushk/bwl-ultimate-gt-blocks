@@ -16,8 +16,9 @@ class Init
 			// Posts\BlogPosts::class, // loads all the frontend styles and scripts.
 			// Base\Enqueue::class, // loads all the frontend styles and scripts.
 			// Base\AdminEnqueue::class, // loads all the backend styles and scripts.
-			Blocks\LatestPosts\LatestPosts::class,
 			Blocks\Button\Button::class,
+			Blocks\LatestPosts\LatestPosts::class,
+			Blocks\Testimonial\Testimonial::class,
 			// Base\Language::class, // loads the translation file.
 			// Base\LoadRequiredFiles::class, // load the required helper files.
 			// Base\PluginFilterHandlers::class, // Frontend filters like - search, theme, post view count, attachment, rewrite

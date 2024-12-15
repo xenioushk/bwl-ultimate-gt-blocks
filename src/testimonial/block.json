@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwl-ultimate-gt-blocks/testimonial",
+	"version": "1.0.0",
+	"title": "BWL Testimonial",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Testimonial block.",
+	"example": {},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"gradients": true
+		}
+	},
+	"attributes": {
+		"numberOfPosts": {
+			"type": "number",
+			"default": 5
+		},
+		"displayFeaturedImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"displayExcerpt": {
+			"type": "boolean",
+			"default": false
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"categories": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"tags": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"textdomain": "bwl-lp-gt-block"
+}
