@@ -14,7 +14,7 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
 
 	return (
@@ -22,31 +22,31 @@ export default function Edit( { attributes, setAttributes } ) {
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
-						isPressed={ attributes.size === 'large' }
-						onClick={ () => setAttributes( { size: 'large' } ) }
+						isPressed={attributes.size === 'large'}
+						onClick={() => setAttributes({ size: 'large' })}
 					>
 						Large
 					</ToolbarButton>
 					<ToolbarButton
-						isPressed={ attributes.size === 'medium' }
-						onClick={ () => setAttributes( { size: 'medium' } ) }
+						isPressed={attributes.size === 'medium'}
+						onClick={() => setAttributes({ size: 'medium' })}
 					>
 						Medium
 					</ToolbarButton>
 					<ToolbarButton
-						isPressed={ attributes.size === 'small' }
-						onClick={ () => setAttributes( { size: 'small' } ) }
+						isPressed={attributes.size === 'small'}
+						onClick={() => setAttributes({ size: 'small' })}
 					>
 						Small
 					</ToolbarButton>
 				</ToolbarGroup>
 			</BlockControls>
-			<div { ...blockProps }>
+			<div {...blockProps}>
 				<RichText
-					allowedFormat={ [ 'core/bold' ] }
+					allowedFormat={['core/bold']}
 					tagName="a"
-					value={ attributes.text }
-					onChange={ ( value ) => setAttributes( { text: value } ) }
+					value={attributes.text}
+					onChange={(value) => setAttributes({ text: value })}
 				></RichText>
 			</div>
 		</>

@@ -4,7 +4,7 @@
  * @package BwlUltimateGtBlocks
  */
 
-namespace Xenioushk\BwlUltimateGtBlocks\Base;
+namespace BwlUltimateGtBlocks\Base;
 
 class Deactivate
 {

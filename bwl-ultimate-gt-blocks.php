@@ -14,6 +14,7 @@
  * @package           BwlUltimateGtBlocks
  */
 
+
 namespace BwlUltimateGtBlocks;
 
 // security check.
@@ -23,26 +24,26 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-define('BLPGTB_DIR', __DIR__);
+define('BWL_ULTIMATE_GT_BLOCKS_DIR', __DIR__);
 
-use Xenioushk\BwlUltimateGtBlocks\Base\Activate;
-use Xenioushk\BwlUltimateGtBlocks\Base\Deactivate;
+use BwlUltimateGtBlocks\Base\Activate;
+use BwlUltimateGtBlocks\Base\Deactivate;
 
-function bwllpgtbActivePlugin()
+function active_bwl_ultimate_gt_blocks()
 {
 	Activate::activate();
 }
 
-register_activation_hook(__FILE__, 'bwllpgtbActivePlugin');
+\register_activation_hook(__FILE__, __NAMESPACE__ . '\\active_bwl_ultimate_gt_blocks');
 
-function bwllpgtbDeactivePlugin()
+function deactive_bwl_ultimate_gt_blocks()
 {
 	Deactivate::deactivate();
 }
 
-register_activation_hook(__FILE__, 'bwllpgtbDeactivePlugin');
+\register_activation_hook(__FILE__, __NAMESPACE__ . '\\deactive_bwl_ultimate_gt_blocks');
 
-if (class_exists('\Xenioushk\\BwlLpgtb\\Init')) {
+if (class_exists('\BwlUltimateGtBlocks\\Init')) {
 
-	\Xenioushk\BwlUltimateGtBlocks\Init::registerServices();
+	\BwlUltimateGtBlocks\Init::register_services();
 }

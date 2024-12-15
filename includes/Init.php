@@ -4,12 +4,12 @@
  * @package BwlUltimateGtBlocks
  */
 
-namespace Xenioushk\BwlUltimateGtBlocks;
+namespace BwlUltimateGtBlocks;
 
 class Init
 {
 
-	public static function getServices()
+	public static function get_services()
 	{
 
 		return [
@@ -17,7 +17,7 @@ class Init
 			// Base\Enqueue::class, // loads all the frontend styles and scripts.
 			// Base\AdminEnqueue::class, // loads all the backend styles and scripts.
 			Blocks\LatestPosts\LatestPosts::class,
-			Blocks\Button::class,
+			Blocks\Button\Button::class,
 			// Base\Language::class, // loads the translation file.
 			// Base\LoadRequiredFiles::class, // load the required helper files.
 			// Base\PluginFilterHandlers::class, // Frontend filters like - search, theme, post view count, attachment, rewrite
@@ -41,10 +41,10 @@ class Init
 
 	// Register all services.
 
-	public static function registerServices()
+	public static function register_services()
 	{
 
-		foreach (self::getServices() as $service) {
+		foreach (self::get_services() as $service) {
 
 			$service = self::instantiate($service);
 

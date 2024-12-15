@@ -1,6 +1,6 @@
 <?php
 
-namespace Xenioushk\BwlUltimateGtBlocks\Base;
+namespace BwlUltimateGtBlocks\Base;
 
 /**
  * AdminEnqueue handles register scripts and styles.
@@ -17,7 +17,7 @@ class AdminEnqueue extends BaseController
 	 */
 	public function register()
 	{
-		add_action('admin_enqueue_scripts', [$this, 'enqueueScripts']);
+		add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
 	}
 
 	/**
@@ -25,7 +25,7 @@ class AdminEnqueue extends BaseController
 	 *
 	 * @return void
 	 */
-	public function enqueueScripts()
+	public function enqueue_scripts()
 	{
 		wp_enqueue_style($this->plugin_slug . '-admin', $this->pluginStylesDir . 'admin.css', [], $this->plugin_version);
 
@@ -34,7 +34,7 @@ class AdminEnqueue extends BaseController
 		wp_enqueue_script($this->plugin_slug . '-admin', $this->pluginScriptsDir . 'admin.js', ['jquery'], $this->plugin_version, true);
 
 		// Load translated texts using by the js fils.
-		$this->adminLocalizeScripts();
+		$this->admin_localize_scripts();
 
 		// Check point To Load JS & CSS files in admin.
 		// We only load Plugin required JS & CSS files where it acutally required.
@@ -98,7 +98,7 @@ class AdminEnqueue extends BaseController
 	 *
 	 * @return void
 	 */
-	public function adminLocalizeScripts()
+	public function admin_localize_scripts()
 	{
 
 		// Backend.

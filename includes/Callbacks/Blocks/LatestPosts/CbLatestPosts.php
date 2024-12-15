@@ -1,8 +1,8 @@
 <?php
 
-namespace Xenioushk\BwlLpgtb\Callbacks\Blocks\LatestPosts;
+namespace BwlUltimateGtBlocks\Callbacks\Blocks\LatestPosts;
 
-use Xenioushk\BwlLpgtb\Base\BaseController;
+use BwlUltimateGtBlocks\Base\BaseController;
 
 class CbLatestPosts extends BaseController
 {

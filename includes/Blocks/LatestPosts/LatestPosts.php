@@ -1,10 +1,9 @@
 <?php
 
-namespace Xenioushk\BwlLpgtb\Blocks\LatestPosts;
+namespace BwlUltimateGtBlocks\Blocks\LatestPosts;
 
-use Xenioushk\BwlLpgtb\Base\BaseController;
-use Xenioushk\BwlLpgtb\Callbacks\Blocks\LatestPosts\CbLatestPosts;
-
+use BwlUltimateGtBlocks\Base\BaseController;
+use BwlUltimateGtBlocks\Callbacks\Blocks\LatestPosts\CbLatestPosts;
 
 class LatestPosts extends BaseController
 {
@@ -19,7 +18,7 @@ class LatestPosts extends BaseController
 	{
 		$cbLatestPosts = new CbLatestPosts();
 		register_block_type_from_metadata(
-			BLPGTB_DIR . '/build',
+			BWL_ULTIMATE_GT_BLOCKS_DIR . '/build',
 			[
 				'render_callback' => [$cbLatestPosts, 'getPosts'],
 			]

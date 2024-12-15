@@ -1,9 +1,8 @@
 <?php
 
-namespace Xenioushk\BwlLpgtb\Blocks;
+namespace BwlUltimateGtBlocks\Blocks\Button;
 
-use Xenioushk\BwlLpgtb\Base\BaseController;
-
+use BwlUltimateGtBlocks\Base\BaseController;
 
 class Button extends BaseController
 {
@@ -13,12 +12,11 @@ class Button extends BaseController
 		add_action('init', [$this, 'registerBlock']);
 	}
 
-
 	public function registerBlock(): void
 	{
 
 		register_block_type_from_metadata(
-			BLPGTB_DIR . '/build/button',
+			BWL_ULTIMATE_GT_BLOCKS_DIR . '/build/button',
 			[
 				'render_callback' => function () {
 					return "working button";
