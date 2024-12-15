@@ -9,10 +9,10 @@ class Testimonial extends BaseController
 
 	public function register(): void
 	{
-		add_action('init', [$this, 'registerBlock']);
+		add_action('init', [$this, 'register_block']);
 	}
 
-	public function registerBlock(): void
+	public function register_block(): void
 	{
 
 		register_block_type_from_metadata(

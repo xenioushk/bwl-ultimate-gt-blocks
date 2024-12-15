@@ -7,7 +7,6 @@ use BwlUltimateGtBlocks\Base\BaseController;
 class CbLatestPosts extends BaseController
 {
 
-
 	public $numberOfPosts        = 5;
 	public $order                = 'DESC';
 	public $orderBy              = 'date';
@@ -19,7 +18,7 @@ class CbLatestPosts extends BaseController
 
 	public function __construct() {}
 
-	function getPosts(array $attributes = [])
+	function get_posts(array $attributes = [])
 	{
 
 		// echo "<pre>";

@@ -10,17 +10,16 @@ class LatestPosts extends BaseController
 
 	public function register(): void
 	{
-		add_action('init', [$this, 'registerBlock']);
+		add_action('init', [$this, 'register_block']);
 	}
 
-
-	public function registerBlock(): void
+	public function register_block(): void
 	{
-		$cbLatestPosts = new CbLatestPosts();
+		$cb_latest_posts = new CbLatestPosts();
 		register_block_type_from_metadata(
 			BWL_ULTIMATE_GT_BLOCKS_DIR . '/build',
 			[
-				'render_callback' => [$cbLatestPosts, 'getPosts'],
+				'render_callback' => [$cb_latest_posts, 'get_posts'],
 			]
 		);
 	}

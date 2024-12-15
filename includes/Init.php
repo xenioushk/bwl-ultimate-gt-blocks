@@ -19,6 +19,7 @@ class Init
 			Blocks\Button\Button::class,
 			Blocks\LatestPosts\LatestPosts::class,
 			Blocks\Testimonial\Testimonial::class,
+			Blocks\Team\Team::class,
 			// Base\Language::class, // loads the translation file.
 			// Base\LoadRequiredFiles::class, // load the required helper files.
 			// Base\PluginFilterHandlers::class, // Frontend filters like - search, theme, post view count, attachment, rewrite
