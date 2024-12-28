@@ -33,3 +33,5 @@ node_modules/
 /vendor/
 
 bkp_phpcs_xml
+
+*.DS_Store
