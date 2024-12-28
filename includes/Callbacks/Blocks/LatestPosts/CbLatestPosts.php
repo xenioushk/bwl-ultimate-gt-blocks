@@ -70,12 +70,12 @@ class CbLatestPosts extends BaseController
 				}
 
 ?>
-				<h2><a href=<?php echo $permalink; ?> title=<?php echo $title; ?>><?php echo $title; ?></a></h2>
+<h2><a href=<?php echo $permalink; ?> title=<?php echo $title; ?>><?php echo $title; ?></a></h2>
 
-				<?php echo $this->displayExcerpt ? "<p>{$excerpt}</p>" : ''; ?>
+<?php echo $this->displayExcerpt ? "<p>{$excerpt}</p>" : ''; ?>
 
-				<div class="featured-image"><?php echo $news_thumb; ?></div>
-				<date><?php echo $date; ?></date>
+<div class="featured-image"><?php echo $news_thumb; ?></div>
+<date><?php echo $date; ?></date>
 
 
 <?php
@@ -85,7 +85,7 @@ class CbLatestPosts extends BaseController
 			return ob_get_clean();
 
 		else :
-			return esc_html('No post found!', $this->plugin_text_domain);
+			return esc_html__('No post found!', 'bwl-ultimate-gt-blocks');
 		endif;
 	}
 }
