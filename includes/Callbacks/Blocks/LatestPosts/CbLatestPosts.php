@@ -18,12 +18,9 @@ class CbLatestPosts extends BaseController
 
 	public function __construct() {}
 
-	function get_posts(array $attributes = [])
+	public function get_posts(array $attributes = []): string
 	{
 
-		// echo "<pre>";
-		// print_r($attributes);
-		// echo "</pre>";
 		$numberOfPosts              = $attributes['numberOfPosts'] ?? $this->numberOfPosts;
 		$order                      = $attributes['order'] ?? $this->order;
 		$orderBy                    = $attributes['orderBy'] ?? $this->orderBy;
@@ -44,48 +41,53 @@ class CbLatestPosts extends BaseController
 			$args['category__in'] = array_column($catgories, 'id');
 		}
 
-		// echo "<pre>";
-		// print_r($args);
-		// echo "</pre>";
-
 		$loop = new \WP_Query($args);
+
+		$output = "<div class='latest-post-block'>";
 
 		if ($loop->have_posts()) :
 
-			ob_start();
-			echo '<div class="latest-post-block">';
-
 			while ($loop->have_posts()) :
-				echo '<div class="post-content">';
 				$loop->the_post();
 				$post_id    = get_the_ID();
 				$title      = get_the_title() ?: 'No Title';
 				$excerpt    = get_the_excerpt();
 				$permalink  = esc_url(get_the_permalink());
-				$news_thumb = '';
+				$thumbnail = '';
 				$date       = get_the_date();
 
+				$output .= "<div class='post-content'>";
+
 				if ($this->displayFeaturedImage && has_post_thumbnail()) {
-					$news_thumb = '<figure>' . get_the_post_thumbnail($post_id, 'large') . '</figure>';
+					$thumbnail = '<figure>' . get_the_post_thumbnail($post_id, 'large') . '</figure>';
 				}
 
-?>
-<h2><a href=<?php echo $permalink; ?> title=<?php echo $title; ?>><?php echo $title; ?></a></h2>
-
-<?php echo $this->displayExcerpt ? "<p>{$excerpt}</p>" : ''; ?>
-
-<div class="featured-image"><?php echo $news_thumb; ?></div>
-<date><?php echo $date; ?></date>
+				if (!empty($title)) {
+					$output .= "<h2><a href='{$permalink}' title='{$title}'>{$title}</a></h2>";
+				}
 
 
-<?php
-				echo '</div>';
+				if ($this->displayExcerpt && !empty($excerpt)) {
+					$output .= "<p>{$excerpt}</p>";
+				}
+
+				if (!empty($thumbnail)) {
+					$output .= "<div class='featured-image'>{$thumbnail}</div>";
+				}
+
+				if (!empty($date)) {
+					$output .= "<date>{$date}</date>";
+				}
+
+				$output .= "</div>";
 			endwhile;
-			echo '</div>';
-			return ob_get_clean();
 
 		else :
-			return esc_html__('No post found!', 'bwl-ultimate-gt-blocks');
+			$output .= esc_html__('No post found!', 'bwl-ultimate-gt-blocks');
 		endif;
+
+		$output = "{$output}</div>";
+
+		return $output;
 	}
 }

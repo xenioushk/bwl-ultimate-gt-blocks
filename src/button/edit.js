@@ -1,19 +1,11 @@
-import { useBlockProps } from '@wordpress/block-editor';
-import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import {
+	useBlockProps,
 	RichText,
-	InspectorControls,
 	BlockControls,
 } from '@wordpress/block-editor';
-import {
-	ToolbarGroup,
-	ToolbarButton,
-	Button,
-	PanelBody,
-	PanelRow,
-	ColorPalette,
-} from '@wordpress/components';
-
+import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
+import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
 
@@ -43,10 +35,11 @@ export default function Edit({ attributes, setAttributes }) {
 			</BlockControls>
 			<div {...blockProps}>
 				<RichText
-					allowedFormat={['core/bold']}
 					tagName="a"
+					allowedFormat={[]}
 					value={attributes.text}
-					onChange={(value) => setAttributes({ text: value })}
+					onChange={(value) => setAttributes({ text: value || '' })}
+					placeholder={__('Button text', 'bwl-ultimate-gt-blocks')}
 				></RichText>
 			</div>
 		</>

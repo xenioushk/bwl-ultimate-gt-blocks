@@ -6,8 +6,12 @@
  */
 
 .latest-post-block {
-	clear: both;
 
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	justify-content: center;
+align-items: flex-start;
 	.post-content {
 		clear: both;
 

@@ -9,7 +9,7 @@
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php",
 	"attributes": {
-		"text": { "type": "string" },
+		"text": { "type": "string", "default": "" },
 		"size": { "type": "string", "default": "large" }
 	}
 }
