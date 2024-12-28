@@ -5,8 +5,13 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+ @import "../shared/index.scss";
+
 .bwl-ultimate-gt-button {
  
 	border: 1px solid #0073aa;
+	padding: 12px;
+	background: #0073aa;
+	@include round(5px);
 
 }
