@@ -17,12 +17,9 @@ export default function Edit({ attributes, setAttributes }) {
 	const { text, size, color } = attributes;
 
 	const ourColors = [
-		{
-			name: 'red',
-			color: '#f00',
-		},
-		{ name: 'green', color: '#0f0' },
-		{ name: 'blue', color: '#00f' },
+		{ name: 'red', color: '#ff0000' },
+		{ name: 'green', color: '#005900' },
+		{ name: 'blue', color: '#0000ff' },
 	];
 
 	const handleColorChange = (value) => {
@@ -59,6 +56,8 @@ export default function Edit({ attributes, setAttributes }) {
 							colors={ourColors}
 							value={color}
 							onChange={handleColorChange}
+							disableCustomColors={true}
+							clearable={false}
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -69,7 +68,8 @@ export default function Edit({ attributes, setAttributes }) {
 					tagName="a"
 					value={text}
 					onChange={(value) => setAttributes({ text: value || '' })}
-				></RichText>
+					className={`btn btn--${size} btn--${color}`}
+				/>
 			</div>
 		</>
 	);

@@ -8,14 +8,26 @@
 
 .wp-block-bwl-ultimate-gt-blocks-button {
  
-	a{
+	.btn{
 		display: inline-block;
-		padding: 10px 20px;
 		background-color: #0073aa;
 		color: #fff;
 		text-decoration: none;
 		font-size: 16px;
 		@include round(5px);
+
+		&.--red{
+			background-color: #ff0000;
+		}
+
+		&.--green{
+			background-color: #005900;
+		}
+
+		&.--blue{
+			background-color: #0000ff;
+		}
+
 	}
 
 }
