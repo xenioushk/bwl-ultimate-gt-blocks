@@ -11,10 +11,14 @@ class CbButton extends BaseController
 
 	public function __construct() {}
 
-	function render_output(array $attributes = [], $content = '')
+	function render_output(array $attributes = [], $content = ''): string
 	{
 		// echo "<pre>";
 		// print_r($attributes);
+		// echo "</pre>";
+
+		// echo "<pre>";
+		// print_r(($attributes));
 		// echo "</pre>";
 
 		return "<a href='#' class='bwl-ultimate-gt-button {$attributes['size']}'>{$attributes['text']}</a>";

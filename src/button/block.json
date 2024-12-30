@@ -13,15 +13,12 @@
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"supports": {
-		"html": false,
-		"color": {
-			"background": true,
-			"gradients": true
-		}
+		"html": false
 	},
 	"attributes": {
 		"text": { "type": "string", "default": "" },
-		"size": { "type": "string", "default": "large" }
+		"size": { "type": "string", "default": "large" },
+		"color": { "type": "string", "default": "#f00" }
 	},
 	"textdomain": "bwl-ultimate-gt-blocks"
 }

@@ -20,6 +20,10 @@
 		}
 	},
 	"attributes": {
+		"size": {
+			"type": "string",
+			"default": "50"
+		},
 		"numberOfPosts": {
 			"type": "number",
 			"default": 5

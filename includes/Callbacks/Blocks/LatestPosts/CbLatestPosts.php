@@ -20,7 +20,9 @@ class CbLatestPosts extends BaseController
 
 	public function get_posts(array $attributes = []): string
 	{
-
+		// echo "<pre>";
+		// print_r($attributes);
+		// echo "</pre>";
 		$numberOfPosts              = $attributes['numberOfPosts'] ?? $this->numberOfPosts;
 		$order                      = $attributes['order'] ?? $this->order;
 		$orderBy                    = $attributes['orderBy'] ?? $this->orderBy;
