@@ -1,3 +1,4 @@
+import colorScheme from '../inc/colorScheme';
 import {
 	useBlockProps,
 	RichText,
@@ -11,19 +12,17 @@ import {
 	ToolbarGroup,
 	ToolbarButton,
 } from '@wordpress/components';
+import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
 	const { text, size, color } = attributes;
 
-	const ourColors = [
-		{ name: 'red', color: '#ff0000' },
-		{ name: 'green', color: '#005900' },
-		{ name: 'blue', color: '#0000ff' },
-	];
-
 	const handleColorChange = (value) => {
-		setAttributes({ color: value });
+		const { name } = colorScheme.find(
+			(newColor) => newColor.color === value
+		);
+		setAttributes({ color: name });
 	};
 	return (
 		<>
@@ -53,7 +52,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title="Color" initialOpen={true}>
 					<PanelRow>
 						<ColorPalette
-							colors={ourColors}
+							colors={colorScheme}
 							value={color}
 							onChange={handleColorChange}
 							disableCustomColors={true}

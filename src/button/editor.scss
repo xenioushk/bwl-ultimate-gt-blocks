@@ -14,20 +14,32 @@
 		color: #fff;
 		text-decoration: none;
 		font-size: 16px;
+		padding: 4px 8px;
 		@include round(5px);
 
-		&.--red{
+		&--red{
 			background-color: #ff0000;
 		}
 
-		&.--green{
+		&--green{
 			background-color: #005900;
 		}
 
-		&.--blue{
+		&--blue{
 			background-color: #0000ff;
 		}
 
+		&--large{
+			padding: 12px 12px;
+		}
+
+		&--medium{		
+			padding: 4px 8px;
+		}
+
+		&--small{
+			padding: 2px 4px;
+		}
 	}
 
 }
