@@ -4,14 +4,14 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-blocks-course-team-members {
+.wp-block-bwl-ultimate-gt-blocks-team{
 	display: block;
 
 	@for $i from 1 through 6 {
 		&.has-#{$i}-columns {
 			> .block-editor-inner-blocks
 				> .block-editor-block-list__layout
-				> [data-type="blocks-course/team-member"] {
+				> [data-type="bwl-ultimate-gt-blocks/team-member"] {
 				width: calc((100% / #{$i}) - 20px);
 			}
 		}
@@ -21,14 +21,14 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin: 0 -10px;
-		[data-type="blocks-course/team-member"] {
+		[data-type="bwl-ultimate-gt-blocks/team-member"] {
 			max-width: none;
 			margin: 0;
 		}
-		> [data-type="blocks-course/team-member"] {
+		> [data-type="bwl-ultimate-gt-blocks/team-member"] {
 			margin: 0 10px;
 
-			.wp-block-blocks-course-team-member-img {
+			.wp-block-bwl-ultimate-gt-blocks-team-member-img {
 				position: relative;
 
 				&.is-loading img {
@@ -57,7 +57,7 @@
 		}
 	}
 
-	.wp-block-blocks-course-team-member-social-links {
+	.wp-block-bwl-ultimate-gt-blocks-team-member-social-links {
 		ul {
 			list-style: none;
 			padding: 0;
@@ -84,7 +84,7 @@
 				border: 1px solid #333;
 			}
 
-			&.wp-block-blocks-course-team-member-add-icon {
+			&.wp-block-bwl-ultimate-gt-blocks-team-member-add-icon {
 				button {
 					border: 1px dashed #333;
 				}

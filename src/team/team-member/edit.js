@@ -6,8 +6,8 @@ import {
 	MediaReplaceFlow,
 	InspectorControls,
 	store as BlockEditorStore,
-} from "@wordpress/block-editor";
-import { __ } from "@wordpress/i18n";
+} from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 import {
 	Spinner,
 	withNotices,
@@ -22,14 +22,13 @@ import {
 	Button,
 	ColorPicker,
 	Notice,
-} from "@wordpress/components";
-import { isBlobURL, revokeBlobURL } from "@wordpress/blob";
-import { useState, useEffect, useRef } from "@wordpress/element";
-import { useSelect } from "@wordpress/data";
-import { usePrevious } from "@wordpress/compose";
+} from '@wordpress/components';
+import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
+import { useState, useEffect, useRef } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import { usePrevious } from '@wordpress/compose';
 
-import Wpdashicon from "./wpcomponents/wpdashicon";
-import Wpquerycontrol from "./wpcomponents/wpquerycontrol";
+import Wpdashicon from './wpcomponents/wpdashicon';
 
 function Edit({
 	attributes,
@@ -48,10 +47,10 @@ function Edit({
 
 	const imageObject = useSelect(
 		(select) => {
-			const { getMedia } = select("core");
+			const { getMedia } = select('core');
 			return id ? getMedia(id) : null;
 		},
-		[id],
+		[id]
 	);
 
 	// console.log(imageObject);
@@ -63,12 +62,6 @@ function Edit({
 
 	const getImageSizeOptions = () => {
 		if (!imageObject) return [];
-
-		// console.log(imageObject);
-		// console.log(imageObject.id);
-		// console.log(imageObject.media_details);
-		// console.log(imageSizes);
-		// return [];
 		const options = [];
 		const sizes = imageObject.media_details.sizes;
 		for (const key in sizes) {
@@ -100,7 +93,7 @@ function Edit({
 	const onSelectImage = (image) => {
 		// If there is no image.
 		if (!image || !image.url) {
-			setAttributes({ id: undefined, alt: "", url: undefined });
+			setAttributes({ id: undefined, alt: '', url: undefined });
 			return;
 		}
 
@@ -116,7 +109,7 @@ function Edit({
 		setAttributes({
 			url: image,
 			id: undefined,
-			alt: "",
+			alt: '',
 		});
 	};
 
@@ -128,7 +121,7 @@ function Edit({
 	const removeImage = () => {
 		setAttributes({
 			id: undefined,
-			alt: "",
+			alt: '',
 			url: undefined,
 		});
 	};
@@ -138,8 +131,8 @@ function Edit({
 			socialLinks: [
 				...socialLinks,
 				{
-					link: "",
-					icon: "wordpress",
+					link: '',
+					icon: 'wordpress',
 				},
 			],
 		});
@@ -159,7 +152,7 @@ function Edit({
 		if (!id && !isBlobURL(url)) {
 			setAttributes({
 				id: undefined,
-				alt: "",
+				alt: '',
 			});
 		}
 	}, []);
@@ -209,34 +202,20 @@ function Edit({
 		}
 	};
 
-	const [myColor, SetMyColor] = useState();
 	return (
 		<>
-			{/* <Notice status="error" isDismissible={false}>
-				This is an error notice panel.
-			</Notice>
-			<Notice status="warning">This is an warning notice panel.</Notice>
-			<Notice status="info">This is an info notice panel.</Notice>
-			<Notice status="success">This is an success notice panel.</Notice> */}
 			{url && !isBlobURL(url) && (
 				<InspectorControls>
 					<PanelBody>
-						<Wpquerycontrol />
-						{/* <ExternalLink href="https://google.com">Google.com</ExternalLink> */}
-						{/* <ColorPicker
-							color={myColor}
-							onChange={(value) => console.log(value)}
-							defaultValue="#000"
-						/> */}
 						<TextareaControl
-							label={__("Alt Text", "team-member")}
+							label={__('Alt Text', 'team-member')}
 							value={alt}
 							onChange={onChangeAltText}
-							help={__("Some help text", "team-member")}
+							help={__('Some help text', 'team-member')}
 						/>
 						{id && (
 							<SelectControl
-								label={__("Image Sizes", "team-member")}
+								label={__('Image Sizes', 'team-member')}
 								options={getImageSizeOptions()}
 								value={url}
 								onChange={onChangeImageSize}
@@ -249,17 +228,17 @@ function Edit({
 			{url && (
 				<BlockControls group="inline">
 					<MediaReplaceFlow
-						name={__("Replace Image", "team-member")}
+						name={__('Replace Image', 'team-member')}
 						onSelect={onSelectImage}
 						onSelectURL={onSelectUrl}
 						onError={onUploadError}
 						accept="image/*"
-						allowedTypes={["image"]}
+						allowedTypes={['image']}
 						mediaId={id}
 						mediaUrl={url}
 					/>
 					<ToolbarButton onClick={removeImage}>
-						{__("Remove Image", "team-member")}
+						{__('Remove Image', 'team-member')}
 					</ToolbarButton>
 				</BlockControls>
 			)}
@@ -267,8 +246,8 @@ function Edit({
 			<div {...useBlockProps()}>
 				{url && (
 					<div
-						className={`wp-block-blocks-course-team-member-img${
-							isBlobURL(url) ? " is-loading" : ""
+						className={`wp-block-bwl-ultimate-gt-blocks-team-member-img${
+							isBlobURL(url) ? ' is-loading' : ''
 						}`}
 					>
 						<img src={url} alt={alt} />
@@ -281,36 +260,43 @@ function Edit({
 					onSelectURL={onSelectUrl}
 					onError={onUploadError}
 					accept="image/*"
-					allowedTypes={["image"]}
+					allowedTypes={['image']}
 					disableMediaButtons={url}
 					notices={noticeUI}
 				/>
 				<RichText
 					ref={titleRef}
-					placeholder={__("Member name", "team-member")}
+					placeholder={__('Member name', 'team-member')}
 					tagName="h4"
 					value={name}
 					onChange={onChangeName}
 					allowedFormats={[]}
 				/>
 				<RichText
-					placeholder={__("Bio", "team-member")}
+					placeholder={__('Bio', 'team-member')}
 					tagName="p"
 					value={bio}
 					onChange={onChangeBio}
 					allowedFormats={[]}
 				/>
 				<Wpdashicon />
-				<div className="wp-block-blocks-course-team-member-social-links">
+				<div className="wp-block-bwl-ultimate-gt-blocks-team-member-social-links">
 					<ul>
 						{socialLinks.map((item, index) => {
 							return (
 								<li
 									key={index}
-									className={selectedLink === index ? "is-selected" : null}
+									className={
+										selectedLink === index
+											? 'is-selected'
+											: null
+									}
 								>
 									<button
-										aria-label={__("Edit social link", "team-member")}
+										aria-label={__(
+											'Edit social link',
+											'team-member'
+										)}
 										onClick={() => setSelectedLink(index)}
 									>
 										<Icon icon={item.icon} />
@@ -320,10 +306,15 @@ function Edit({
 						})}
 
 						{isSelected && (
-							<li className="wp-block-blocks-course-team-member-add-icon">
-								<Tooltip text={__("Add social link", "team-member")}>
+							<li className="wp-block-bwl-ultimate-gt-blocks-team-member-add-icon">
+								<Tooltip
+									text={__('Add social link', 'team-member')}
+								>
 									<button
-										aria-label={__("Add social link", "team-member")}
+										aria-label={__(
+											'Add social link',
+											'team-member'
+										)}
 										onClick={addNewSocialLink}
 									>
 										<Icon icon="plus" />
@@ -335,19 +326,23 @@ function Edit({
 				</div>
 
 				{selectedLink !== undefined && (
-					<div className="wp-block-blocks-course-team-member-link-form">
+					<div className="wp-block-bwl-ultimate-gt-blocks-team-member-link-form">
 						<TextControl
-							label={__("Icon", "team-member")}
+							label={__('Icon', 'team-member')}
 							value={socialLinks[selectedLink].icon}
-							onChange={(value) => UpdateSocialIcon("icon", value)}
+							onChange={(value) =>
+								UpdateSocialIcon('icon', value)
+							}
 						/>
 						<TextControl
-							label={__("Link", "team-member")}
+							label={__('Link', 'team-member')}
 							value={socialLinks[selectedLink].link}
-							onChange={(value) => UpdateSocialIcon("link", value)}
+							onChange={(value) =>
+								UpdateSocialIcon('link', value)
+							}
 						/>
 						<Button isDestructive onClick={removeSocialIcon}>
-							{__("Remove Link", "team-member")}
+							{__('Remove Link', 'team-member')}
 						</Button>
 					</div>
 				)}

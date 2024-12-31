@@ -40,7 +40,11 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<InnerBlocks
 				template={teamMemberTemplates}
-				allowedBlocks={['bwl-ultimate-gt-blocks/team-member']}
+				allowedBlocks={[
+					'bwl-ultimate-gt-blocks/team-member',
+					'core/heading',
+					'core/paragraph',
+				]}
 				orientation="horizontal"
 			/>
 		</div>
