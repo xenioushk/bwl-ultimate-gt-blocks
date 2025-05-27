@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/petition-submit-to",
+  "version": "1.0.0",
+  "title": "BWL Peitition Submitted To",
+  "category": "bptm-gt-blocks",
+  "icon": "nametag",
+  "description": "BWL Peitition Submitted To",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "petitionId": { "type": "string", "default": "" },
+    "type": { "type": "string", "default": "submit-to" }
+  },
+  "textdomain": "bugtb"
+}

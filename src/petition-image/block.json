@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/petition-image",
+  "version": "1.0.0",
+  "title": "BWL Peitition Featured Image",
+  "category": "bptm-gt-blocks",
+  "icon": "format-image",
+  "description": "BWL Peitition Featured Image",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "petitionId": { "type": "string", "default": "" },
+    "type": { "type": "string", "default": "image" }
+  },
+  "textdomain": "bugtb"
+}

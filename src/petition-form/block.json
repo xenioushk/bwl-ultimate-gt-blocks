@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/petition-form",
+  "version": "1.0.0",
+  "title": "BWL Peitition Form",
+  "category": "bptm-gt-blocks",
+  "icon": "welcome-widgets-menus",
+  "description": "BWL Peitition Form",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "petitionId": { "type": "string", "default": "" },
+    "type": { "type": "string", "default": "form" }
+  },
+  "textdomain": "bugtb"
+}

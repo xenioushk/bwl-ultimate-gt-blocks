@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/slide",
+  "version": "1.0.0",
+  "title": "Bwl Custom Slide",
+  "parent": ["bugtb/slideshow"],
+  "category": "widgets",
+  "icon": "format-image",
+  "description": "BWL Custom Slide",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "reusable": false
+  },
+  "attributes": {
+    "content": { "type": "string", "default": "" }
+  },
+  "textdomain": "bugtb"
+}

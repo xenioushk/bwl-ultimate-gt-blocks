@@ -1,0 +1,16 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@import "../shared/index.scss";
+
+.wp-block-bugtb-banner {
+  background-color: transparent;
+  border: 1px solid lightskyblue;
+  padding: 12px 0;
+  background-image: url("../../libs/blocks/images/harddrive.jpg");
+  background-repeat: none;
+  background-size: cover;
+}

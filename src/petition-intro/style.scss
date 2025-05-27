@@ -1,0 +1,48 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@import "../shared/index.scss";
+
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-bpm-gt-block {
+  background-color: darken(#fafafa, 1%);
+  color: #2c2c2c;
+  padding: 12px;
+  border: 1px solid #808080;
+  margin: 0;
+
+  .bpm-poll-question {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: lightyellow;
+    padding: 0;
+  }
+  .bpm-content {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+  }
+
+  .bpm-poll-options {
+    font-size: 0.9rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 6px 0 0;
+    line-height: 1.6rem;
+  }
+
+  .action-container {
+    display: none;
+  }
+}

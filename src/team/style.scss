@@ -1,0 +1,54 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .wp-block-bwl-ultimate-gt-blocks-team{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+
+	@for $i from 1 through 6 {
+		&.has-#{$i}-columns {
+			.wp-block-bwl-ultimate-gt-blocks-team-member {
+				width: calc((100% / #{$i}) - 20px);
+			}
+		}
+	}
+
+	.wp-block-bwl-ultimate-gt-blocks-team-member{
+		margin: 0 10px;
+
+		h4 {
+			font-size: 24px;
+			font-weight: 700;
+			margin-bottom: 6px;
+		}
+		p {
+			font-size: 16px;
+			margin-bottom: 6px;
+		}
+	}
+
+	.wp-block-bwl-ultimate-gt-blocks-team-member-social-links {
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 20px -5px 0;
+
+			li {
+				display: inline-block;
+				margin: 5px;
+				span.dashicon {
+					color: #444;
+				}
+
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

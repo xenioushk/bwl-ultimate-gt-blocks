@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/petition-intro",
+  "version": "1.0.0",
+  "title": "BWL Peitition Intro",
+  "category": "bptm-gt-blocks",
+  "icon": "format-status",
+  "description": "BWL Peitition Intro",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "petitionId": { "type": "string", "default": "" },
+    "type": { "type": "string", "default": "intro" }
+  },
+  "textdomain": "bugtb"
+}

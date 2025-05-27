@@ -1,0 +1,42 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@import "../shared/index.scss";
+
+.bugtb-button {
+  display: inline-block;
+  background-color: #0073aa;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 4px 8px;
+  @include round(5px);
+
+  &--red {
+    background-color: #ff0000;
+  }
+
+  &--green {
+    background-color: #005900;
+  }
+
+  &--blue {
+    background-color: #0000ff;
+  }
+
+  &--large {
+    padding: 12px 12px;
+  }
+
+  &--medium {
+    padding: 4px 8px;
+  }
+
+  &--small {
+    padding: 2px 4px;
+  }
+}

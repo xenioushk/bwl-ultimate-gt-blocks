@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bugtb/slideshow",
+  "version": "1.0.0",
+  "title": "Bwl Custom Slide Show",
+  "category": "widgets",
+  "icon": "images-alt2",
+  "description": "BWL Custom Slide Show",
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "bugtb"
+}
