@@ -7,7 +7,7 @@ use BUGTB\Callbacks\Filters\Admin\BlockCategoryCb;
 /**
  * Class for registering the block category.
  *
- * @since: 2.1.9
+ * @since: 1.0.0
  * @package BUGTB
  */
 class BlockCategory {

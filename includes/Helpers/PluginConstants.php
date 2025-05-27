@@ -114,7 +114,7 @@ class PluginConstants {
 	private static function set_updater_constants() {
 
 		// Only change the slug.
-		$slug        = 'bptm/notifier_bptm.php';
+		$slug        = 'bugtb/notifier_bugtb.php';
 		$updater_url = "https://projects.bluewindlab.net/wpplugin/zipped/plugins/{$slug}";
 
 		define( 'BUGTB_UPDATER_URL', $updater_url ); // phpcs:ignore

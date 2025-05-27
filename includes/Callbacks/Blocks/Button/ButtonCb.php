@@ -26,8 +26,8 @@ class ButtonCb {
 			$tag    = $data['tag'];
 			$href   = $data['href'] ?? '#';
 			$text   = $data['text'] ?? $attributes['text'];
-			$target = isset( $data['target'] ) ? "target='{$data['target']}'" : '';
-			$rel    = isset( $data['rel'] ) ? "rel='{$data['rel']}'" : '';
+			$target = isset( $data['target'] ) ? sprintf( "target='%s'", $data['target'] ) : '';
+			$rel    = isset( $data['rel'] ) ? sprintf( "rel='%s'", $data['rel'] ) : '';
 
 			$color = $attributes['color'] ?? 'blue';
 			$size  = $attributes['size'] ?? 'medium';

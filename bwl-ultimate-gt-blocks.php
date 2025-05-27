@@ -13,8 +13,6 @@
  *
  * @package           BUGTB
  */
-
-
 namespace BUGTB;
 
 // security check.
@@ -29,35 +27,34 @@ define( 'BWL_ULTIMATE_GT_BLOCKS_DIR', __DIR__ );
 use BUGTB\Base\Activate;
 use BUGTB\Base\Deactivate;
 
-
 /**
  * Function to handle the activation of the plugin.
  *
  * @return void
  */
-    function activate_plugin() { // phpcs:ignore
+function activate_plugin() { // phpcs:ignore
 	global $wpdb;
 	$activate = new Activate( $wpdb );
 	$activate->activate();
 }
 
-	/**
-	 * Function to handle the deactivation of the plugin.
-	 *
-	 * @return void
-	 */
-	function deactivate_plugin() { // phpcs:ignore
+/**
+ * Function to handle the deactivation of the plugin.
+ *
+ * @return void
+ */
+function deactivate_plugin() { // phpcs:ignore
 	Deactivate::deactivate();
 }
 
-	register_activation_hook( __FILE__, __NAMESPACE__ . '\\activate_plugin' );
-	register_deactivation_hook( __FILE__, __NAMESPACE__ . '\\deactivate_plugin' );
+register_activation_hook( __FILE__, __NAMESPACE__ . '\\activate_plugin' );
+register_deactivation_hook( __FILE__, __NAMESPACE__ . '\\deactivate_plugin' );
 
-	/**
-	 * Function to handle the initialization of the plugin.
-	 *
-	 * @return void
-	 */
+/**
+ * Function to handle the initialization of the plugin.
+ *
+ * @return void
+ */
 function init_bugtb() {
 
 	if ( class_exists( 'BUGTB\\Init' ) ) {
@@ -66,4 +63,4 @@ function init_bugtb() {
 	}
 }
 
-	add_action( 'init', __NAMESPACE__ . '\\init_bugtb' );
+add_action( 'init', __NAMESPACE__ . '\\init_bugtb' );
