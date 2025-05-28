@@ -1,0 +1,20 @@
+$bugtb-bg-white: #ffffff;
+$bugtb-bg-black: #000000;
+$bugtb-bg-blue: #0073aa;
+$bugtb-bg-green: #28a745;
+$bugtb-bg-red: #dc3545;
+$bugtb-bg-orange: #ff9800;
+
+$bugtb-color-white: #ffffff;
+$bugtb-color-black: #000000;
+$bugtb-color-blue: #0073aa;
+$bugtb-color-green: #28a745;
+$bugtb-color-red: #dc3545;
+$bugtb-color-orange: #ff9800;
+
+.bwl-steps-highlighter {
+  background-color: $bugtb-bg-blue;
+  color: $bugtb-color-white;
+  padding: 0 4px;
+  border-radius: 3px;
+}

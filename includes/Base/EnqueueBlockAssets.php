@@ -52,11 +52,18 @@ class EnqueueBlockAssets {
 	public function get_the_styles() {
 		// Register Styles.
 
+		// wp_enqueue_style(
+		// 'swiper-bundle',
+		// BUGTB_LIBS_DIR . 'swiper/styles/swiper-bundle.min.css',
+		// [],
+		// BUGTB_PLUGIN_VERSION );
+
 		wp_enqueue_style(
-            'swiper-bundle',
-            BUGTB_LIBS_DIR . 'swiper/styles/swiper-bundle.min.css',
+            'format-types',
+            BUGTB_BUILD_DIR . 'custom/style-format-types.css',
             [],
-        BUGTB_PLUGIN_VERSION );
+            BUGTB_PLUGIN_VERSION
+		);
 	}
 	/**
 	 * Load the plugin scripts.
@@ -64,11 +71,19 @@ class EnqueueBlockAssets {
 	public function get_the_scripts() {
 
 		// Register JS
+		// wp_enqueue_script(
+		// 'swiper-bundle',
+		// BUGTB_LIBS_DIR . 'swiper/scripts/swiper-bundle.min.js',
+		// [],
+		// BUGTB_PLUGIN_VERSION, true );
+
 		wp_enqueue_script(
-			'swiper-bundle',
-			BUGTB_LIBS_DIR . 'swiper/scripts/swiper-bundle.min.js',
+			'format-types',
+			BUGTB_BUILD_DIR . 'custom/format-types.js',
 			[],
-		BUGTB_PLUGIN_VERSION, true );
+			BUGTB_PLUGIN_VERSION,
+			true
+		);
 
 		// Load frontend variables used by the JS files.
 		// $this->get_the_localization_texts();

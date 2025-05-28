@@ -13,10 +13,12 @@
     "make-pot": "wp i18n make-pot . languages/bwl-ultimate-gt-blocks.pot --slug=bwl-ultimate-gt-blocks --domain=bwl-ultimate-gt-blocks --exclude=node_modules,src",
     "make-json": "wp i18n make-json languages/ --no-purge",
     "lint:php": "vendor/bin/phpcs",
-    "lint:php:fix": "vendor/bin/phpcbf"
+    "lint:php:fix": "vendor/bin/phpcbf",
+    "test:e2e": "wp-scripts test-e2e"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^26.16.0"
+    "@wordpress/scripts": "^26.16.0",
+    "webpack-merge": "^6.0.1"
   },
   "dependencies": {
     "@wordpress/components": "^25.12.0",
